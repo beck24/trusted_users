@@ -15,6 +15,7 @@ $en = array(
 	'trusted_users:label:months' => 'Automatically trust users after how many months of membership?',
 	'trusted_users:help:months' => 'Enter a numerical value, users who have been members for longer than this many months will automatically be trusted.  To not have any automatically trusted users leave this field blank.',
 	'trusted_users:add:trusted' => 'Add Trusted Status',
+	'trusted_users:help:months' => "Users who have been members longer than this will automatically be trusted.  To use automatically trusted users leave this field blank.",
 );
 
 add_translation('en', $en);
