@@ -1,0 +1,9 @@
+== Version History ==
+
+x.x (mm/dd/yyyy):
+
+1.0.1 (10/02/2013):
+- fix wsod
+
+1.0 (10/01/2013):
+- initial release
