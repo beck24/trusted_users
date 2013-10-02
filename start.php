@@ -20,11 +20,11 @@ function trusted_users_init() {
 function trusted_users_is_trusted($user) {
 	$return = false;
 	
-	if ($user->isAdmin()) {
-		$return = true;
-	}
-	
 	if (elgg_instanceof($user, 'user') && !$return) {
+		if ($user->isAdmin()) {
+			$return = true;
+		}
+	
 		$months = elgg_get_plugin_setting('trusted_users_months', 'trusted_users');
 		if ($months && is_numeric($months)) {
 			$return = $user->getTimeCreated() < strtotime("-{$months} months");
