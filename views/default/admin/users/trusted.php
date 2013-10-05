@@ -15,7 +15,8 @@ $options = array(
 	'inverse_relationship' => true,
 	'joins' => array("JOIN {$dbprefix}users_entity ue ON ue.guid = e.guid"),
 	'order_by' => 'ue.name ASC',
-	'limit' => false,
+	'limit' => get_input('limit', 10),
+	'offset' => get_input('offset', 0),
 	'count' => true
 );
 
