@@ -1,15 +1,12 @@
 <?php
 
-elgg_register_event_handler('init', 'system', 'trusted_users_init');
-
-function trusted_users_init() {
+elgg_register_event_handler('init', 'system', function() {
 	elgg_register_plugin_hook_handler('register', 'menu:entity', 'trusted_users_entity_menu');
 	elgg_register_plugin_hook_handler('register', 'menu:user_hover', 'trusted_users_hover_menu');
 	
-	elgg_register_action('trusted_users/add', dirname(__FILE__) . '/actions/add.php', 'admin');
-	elgg_register_action('trusted_users/remove', dirname(__FILE__) . '/actions/remove.php', 'admin');
-}
-
+	elgg_register_action('trusted_users/add', __DIR__ . '/actions/add.php', 'admin');
+	elgg_register_action('trusted_users/remove', __DIR__ . '/actions/remove.php', 'admin');
+});
 
 /**
  * Returns bool - is the user trusted?
@@ -20,7 +17,7 @@ function trusted_users_init() {
 function trusted_users_is_trusted($user) {
 	$return = false;
 	
-	if (elgg_instanceof($user, 'user') && !$return) {
+	if (elgg_instanceof($user, 'user')) {
 		if ($user->isAdmin()) {
 			$return = true;
 		}
@@ -31,11 +28,11 @@ function trusted_users_is_trusted($user) {
 		}
 		
 		if (!$return) {
-			$return = check_entity_relationship($user->guid, 'trusted_user', elgg_get_site_entity()->guid);
+			$return = (bool) check_entity_relationship($user->guid, 'trusted_user', elgg_get_site_entity()->guid);
 		}
 	}
 	
-	return elgg_trigger_plugin_hook('trusted_users', 'is_trusted', array('user' => $user), $return);
+	return elgg_trigger_plugin_hook('trusted_users', 'is_trusted', ['user' => $user], $return);
 }
 
 

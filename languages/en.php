@@ -1,6 +1,6 @@
 <?php
 
-$en = array(
+return [
 	'trusted_users:trusted:users' => "Trusted Users",
 	'trusted_users:trusted:users:help' => "This is a list of users who have been manually designated as trusted by an administrator using the userpicker.  This does not include users who are considered trusted due to membership time or other plugin criteria.",
 	'admin:users:trusted' => "Trusted Users",
@@ -16,6 +16,4 @@ $en = array(
 	'trusted_users:help:months' => 'Enter a numerical value, users who have been members for longer than this many months will automatically be trusted.  To not have any automatically trusted users leave this field blank.',
 	'trusted_users:add:trusted' => 'Add Trusted Status',
 	'trusted_users:help:months' => "Users who have been members longer than this will automatically be trusted.  To use automatically trusted users leave this field blank.",
-);
-
-add_translation('en', $en);
+];
